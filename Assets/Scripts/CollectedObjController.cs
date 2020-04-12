@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CollectedObjController : MonoBehaviour
 {
@@ -25,7 +26,13 @@ public class CollectedObjController : MonoBehaviour
         }
     }
 
-
+    private void Update()
+    {
+        if(Sphere.position.y <= -5f)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+    }
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("CollectableObj"))
